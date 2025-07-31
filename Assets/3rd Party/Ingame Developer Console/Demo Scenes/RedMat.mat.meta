@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8635caa58b9aee04eacec1b99d7d3ce5
+timeCreated: 1560217306
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Demo Scenes/RedMat.mat
+  uploadId: 743062

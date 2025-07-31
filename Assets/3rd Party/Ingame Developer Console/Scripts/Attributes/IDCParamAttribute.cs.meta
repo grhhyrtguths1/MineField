@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 3cfdf96042d30f04bad68dcdb9056559
+timeCreated: 1554872981
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/Attributes/IDCParamAttribute.cs
+  uploadId: 743062

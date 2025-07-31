@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 3aad3e5b86a37344095a6f58fc01017d
+timeCreated: 1554175145
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/IDCVarsWindow.cs
+  uploadId: 743062

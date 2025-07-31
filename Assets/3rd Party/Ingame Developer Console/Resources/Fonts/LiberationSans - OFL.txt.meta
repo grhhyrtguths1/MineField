@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b37cf6756df815a47a75b68de74e4629
+timeCreated: 1484171296
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/Fonts/LiberationSans - OFL.txt
+  uploadId: 743062

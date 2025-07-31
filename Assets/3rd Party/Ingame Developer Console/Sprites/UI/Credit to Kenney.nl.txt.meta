@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 91ae801587768434baf6769e53f4aca9
+timeCreated: 1554839417
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Sprites/UI/Credit to Kenney.nl.txt
+  uploadId: 743062

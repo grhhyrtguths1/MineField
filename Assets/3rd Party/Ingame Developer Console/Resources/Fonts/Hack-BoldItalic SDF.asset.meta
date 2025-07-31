@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e70b332d5f93c3543b1d44954b09b5b6
+timeCreated: 1562508313
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/Fonts/Hack-BoldItalic SDF.asset
+  uploadId: 743062

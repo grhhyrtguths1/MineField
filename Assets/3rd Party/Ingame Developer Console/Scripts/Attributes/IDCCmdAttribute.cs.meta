@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: ab41273e899f51341bc9247645a7a165
+timeCreated: 1516128866
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/Attributes/IDCCmdAttribute.cs
+  uploadId: 743062

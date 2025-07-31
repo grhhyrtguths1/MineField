@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4722f487edbe76343999da816f75f568, type: 3}
+  m_Name: DefaultIDCSettings
+  m_EditorClassIdentifier: 
+  maxLogLines: 1000
+  maxSuggestionsToShow: 20
+  consoleSpd: 0.6
+  scrollSpd: 15
+  openConsoleSize: 0.3
+  MinVarsWindowSize: {x: 0.25, y: 0.6}
+  DefaultVarsWindowPos: {x: 0.75, y: 0.4}
+  catchUnityLogs: 1
+  shortcutsInConsoleOnly: 0
+  updateIDCEnumsOnScriptReload: 1
+  consoleAccessLvl: 5
+  logFont: {fileID: 11400000, guid: 40114b14cd49bd1438ecec5b839fabf7, type: 2}
+  suggestionsFont: {fileID: 11400000, guid: 1073310ac4d1a15429bfd8b10201b98f, type: 2}
+  varsWindowFont: {fileID: 11400000, guid: 40114b14cd49bd1438ecec5b839fabf7, type: 2}
+  logFontSize: 20
+  suggestionsFontSize: 20
+  varsWindowFontSize: 20
+  logLineSpacing: 1.1
+  suggestionsLineSpacing: 1.1
+  varsWindowLineSpacing: 1.1
+  tabSize: 4
+  showLogPrefix: 1
+  showWarningPrefix: 1
+  showAssertPrefix: 1
+  showErrorPrefix: 1
+  showExceptionPrefix: 1
+  toggleKey: 96
+  sizeModifierKey: 304
+  cmdColor: {r: 0, g: 0.48820448, b: 1, a: 1}
+  argumentColor: {r: 0.5529412, g: 0.47843137, b: 1, a: 1}
+  stringColor: {r: 0.8392157, g: 0.6156863, b: 0.52156866, a: 1}
+  logAreaColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 0.9607843}
+  VarsWindowColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 1}
+  generalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  warningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  assertColor: {r: 0.9019608, g: 0.19607843, b: 0.19607843, a: 1}
+  errorColor: {r: 0.9019608, g: 0.19607843, b: 0.19607843, a: 1}
+  exceptionColor: {r: 0.9019608, g: 0.19607843, b: 0.19607843, a: 1}
+  suggestionsColor: {r: 1, g: 1, b: 1, a: 1}
+  selectedSuggestionColor: {r: 1, g: 0.84313726, b: 0, a: 1}
+  suggestionsAreaColor: {r: 0.11764706, g: 0.11764706, b: 0.11764706, a: 0.9607843}

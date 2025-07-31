@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 69b89ee1873bc3443aaf127ed793d0da
+timeCreated: 1558864395
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/Editor/IDCControllerInspector.cs
+  uploadId: 743062

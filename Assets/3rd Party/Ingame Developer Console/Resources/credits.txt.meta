@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7c630fecbf8b69a4789f2f2e0c85049e
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/credits.txt
+  uploadId: 743062

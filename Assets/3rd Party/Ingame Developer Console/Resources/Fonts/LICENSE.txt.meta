@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3ba2c11f1f88fab4ab92ba41b5100013
+timeCreated: 1552847554
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/Fonts/LICENSE.txt
+  uploadId: 743062

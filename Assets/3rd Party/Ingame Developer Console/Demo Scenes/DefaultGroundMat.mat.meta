@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cd5820ecef781bb47806ad5be183fdbe
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Demo Scenes/DefaultGroundMat.mat
+  uploadId: 743062

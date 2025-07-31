@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 4f1839dac2174994483d10e8224cc799
+timeCreated: 1547340825
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/IDCState.cs
+  uploadId: 743062

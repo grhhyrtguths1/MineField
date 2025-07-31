@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 434fb3080446df841bf6b65f66989e2a
+timeCreated: 1552847395
+licenseType: Store
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 18
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hack
+  fontNames:
+  - Hack
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/Fonts/Hack-BoldItalic.ttf
+  uploadId: 743062

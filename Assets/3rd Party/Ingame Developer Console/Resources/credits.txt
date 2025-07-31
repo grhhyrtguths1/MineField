@@ -1,0 +1,1 @@
+The 'Prototype_512x512_White' material and the 'prototype_512x512_white' texture are from Ciathyza's free Gridbox Prototype Materials project: https://assetstore.unity.com/packages/2d/textures-materials/gridbox-prototype-materials-129127

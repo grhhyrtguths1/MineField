@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf987b50dd20446f8921ee9de598e211, type: 3}
+  m_Name: NewResourceConfig 1
+  m_EditorClassIdentifier: 
+  resources:
+    _serializedList:
+    - Key: 0
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 1
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 2
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 3
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 4
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 5
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 6
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 7
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 8
+      Value:
+        startAmount: 0
+        maxAmount: 100

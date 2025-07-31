@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7b41c9fa822a0d843a948ada0a0d15e1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Demo Scenes/Demo1Controller.cs
+  uploadId: 743062

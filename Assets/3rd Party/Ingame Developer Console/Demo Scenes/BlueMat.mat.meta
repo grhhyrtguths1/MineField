@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2fda54a5e19b8c544891a6fdb663c2aa
+timeCreated: 1560217312
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Demo Scenes/BlueMat.mat
+  uploadId: 743062

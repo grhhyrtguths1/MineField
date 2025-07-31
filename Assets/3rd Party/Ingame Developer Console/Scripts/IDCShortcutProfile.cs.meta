@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 5688fd45e3985214f9d89b3ef0d177c1
+timeCreated: 1559740090
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/IDCShortcutProfile.cs
+  uploadId: 743062

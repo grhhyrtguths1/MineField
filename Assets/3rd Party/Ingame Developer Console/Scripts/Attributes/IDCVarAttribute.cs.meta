@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: d0112b77635f6cb439b8993811fd303e
+timeCreated: 1553615397
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/Attributes/IDCVarAttribute.cs
+  uploadId: 743062

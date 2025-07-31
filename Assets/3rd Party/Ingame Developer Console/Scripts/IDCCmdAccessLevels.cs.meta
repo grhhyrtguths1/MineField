@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8ec7822d330c06f4995f77512fabe674
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Scripts/IDCCmdAccessLevels.cs
+  uploadId: 743062

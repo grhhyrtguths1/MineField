@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 74295030a36f3a64e8fb87b0172f92be
+timeCreated: 1566085106
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Prefabs/InfiniteLog.prefab
+  uploadId: 743062

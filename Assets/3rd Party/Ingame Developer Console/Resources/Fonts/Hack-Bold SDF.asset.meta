@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 40114b14cd49bd1438ecec5b839fabf7
+timeCreated: 1562508248
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Resources/Fonts/Hack-Bold SDF.asset
+  uploadId: 743062

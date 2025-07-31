@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b0faa75d391ca4940b84666fbb9b2b26
+timeCreated: 1562504130
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 305176
+  packageName: Ingame Developer Console
+  packageVersion: 1.0
+  assetPath: Assets/Ingame Developer Console/Prefabs/IDCCanvas.prefab
+  uploadId: 743062
