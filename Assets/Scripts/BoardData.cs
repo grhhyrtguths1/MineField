@@ -50,10 +50,7 @@ public class BoardData
         {
             return _boardCells[y][x];
         }
-        else
-        {
-            throw new System.ArgumentOutOfRangeException($"Cell position ({x}, {y}) is out of bounds.");
-        }
+        throw new System.ArgumentOutOfRangeException($"Cell position ({x}, {y}) is out of bounds.");
     }
 
     private void LinkCells()
@@ -68,11 +65,9 @@ public class BoardData
                     int neighborX = row.IndexOf(cell) + offset.x;
                     int neighborY = _boardCells.IndexOf(row) + offset.y;
 
-                    if (IsValidCell(neighborX, neighborY))
-                    {
-                        CellData neighbor = _boardCells[neighborY][neighborX];
-                        cell.SetNeighbor(kvp.Key, neighbor);
-                    }
+                    if (!IsValidCell(neighborX, neighborY)) continue;
+                    CellData neighbor = _boardCells[neighborY][neighborX];
+                    cell.SetNeighbor(kvp.Key, neighbor);
                 }
             }
         }

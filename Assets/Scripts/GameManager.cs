@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameResources.ResourceConfig resourceConfig;
+    [SerializeField] private ResourceConfig resourceConfig;
     [SerializeField] private ResourceView resourceView;
         
     private ResourceManager _resourceManager;

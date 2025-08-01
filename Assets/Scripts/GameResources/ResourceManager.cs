@@ -1,24 +1,14 @@
 ﻿using System;
 using IDC;
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace GameResources
 {
     public class ResourceManager
     {
-       [SerializeField, ReadOnly] private ResourceData _data;
-        
-        public static ResourceManager Instance { get; private set; }
-
+       private ResourceData _data;
         public ResourceManager(ResourceData data, ResourceView resourceView)
         {
-            if (Instance != null)
-            {
-                Debug.LogError("ResourceManager instance already exists!");
-                return;
-            }
-            Instance = this;
             _data = data;
             BindView(resourceView);
         
@@ -26,6 +16,7 @@ namespace GameResources
             {
                 resourceView.UpdateResourceUI(type, _data.Get(type));
             }
+            ResourceManagerProvider.SetResourceManager(this);
         }
         
         [IDCCmd]

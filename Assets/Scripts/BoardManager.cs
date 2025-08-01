@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IDC;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ public class BoardManager : MonoBehaviour
     {
         _boardData = new BoardData(width, height, minesCount);
         GenerateCells();
+    }
+    
+    
+    private void Start()
+    {
+        IDCUtils.IDC.AddClass(this);
     }
 
     private void GenerateCells()
@@ -47,8 +54,9 @@ public class BoardManager : MonoBehaviour
         cellController.Init(_boardData.GetCellData(x, y));
                 
 #if UNITY_EDITOR
-        cellController.gameObject.hideFlags = HideFlags.DontSave;
-        cellController.gameObject.tag = "EditorOnly";
+        GameObject cellControllerGameObject = cellController.gameObject;
+        cellControllerGameObject.hideFlags = HideFlags.DontSave;
+        cellControllerGameObject.tag = "EditorOnly";
 #endif
         return cellController;
     }
@@ -84,6 +92,55 @@ public class BoardManager : MonoBehaviour
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
             DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+    }
+
+    [IDCCmd]
+    private void AddCellLine(Direction direction, int minesCount = 2)
+    {
+        switch (direction)
+        {
+            case Direction.Down:
+                height += 1;
+                List<CellController> newRow = new List<CellController>(width);
+                for (int i = 0; i < width; i++)
+                {
+                    CellController cellController = CreateCellController(i, height - 1);
+                    if (cellController != null)
+                    {
+                        newRow.Add(cellController);
+                    }
+                }
+                _cells.Add(newRow);
+                break;
+            case Direction.Up:
+                height += 1;
+                break;
+            case Direction.Left:
+                width += 1;
+                // for (int i = 0; i < height; i++)
+                // {
+                //     CellController cellController = CreateCellController(0, i);
+                //     if (cellController != null)
+                //     {
+                //         _cells[i].Insert(0, cellController);
+                //     }
+                // }
+                break;
+            case Direction.Right:
+                width += 1;
+                for (int i = 0; i < height; i++)
+                {
+                    CellController cellController = CreateCellController(width - 1, i);
+                    if (cellController != null)
+                    {
+                        _cells[i].Add(cellController);
+                    }
+                }
+                break;
+            default:
+                Debug.LogError("Invalid direction for adding a cell line.");
+                break;
         }
     }
 }

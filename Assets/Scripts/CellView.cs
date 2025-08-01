@@ -13,22 +13,29 @@ public class CellView :MonoBehaviour
     public void Init(CellData cellData)
     {
         _meshRenderer = GetComponent<MeshRenderer>();
-        SetState(CellState.Hidden); 
-        if (cellData.CellType == CellType.Mine)
+        ShowHidden();
+        switch (cellData.CellType)
         {
-            Instantiate(minePrefab, transform);
+            case CellType.Mine:
+                Instantiate(minePrefab, transform);
+                break;
+            case CellType.Number when cellData.Number >= 0:
+                numberText.text = cellData.Number.ToString();
+                break;
+            default:
+                Debug.LogError("CellView.Init called with invalid parameters: " +
+                               $"cellType={cellData.CellType}, cellNumber={cellData.Number}");
+                break;
         }
-        else if (cellData.CellType == CellType.Number && cellData.Number >= 0)
-        {
-            numberText.text = cellData.Number.ToString();
-        }
-        else
-        {
-            Debug.LogError("CellView.Init called with invalid parameters: " +
-                           $"cellType={cellData.CellType}, cellNumber={cellData.Number}");
-        }
-        cellData.OnStateChanged += SetState;
         cellData.OnNumberChanged += UpdateNumber;
+    }
+    
+    public void Unsubscribe(CellData cellData)
+    {
+        if (cellData != null)
+        {
+            cellData.OnNumberChanged -= UpdateNumber;
+        }
     }
     
 
@@ -42,32 +49,33 @@ public class CellView :MonoBehaviour
         _meshRenderer.material.color = cellState == CellState.Flagged ? Color.yellow : Color.gray;
     }
     
-    public void SetState(CellState cellState)
-    {
-        switch (cellState)
-        {
-            case CellState.Hidden:
-                ShowHidden();
-                break;
-            case CellState.Revealed:
-                Reveal();
-                break;
-            case CellState.Flagged:
-                ShowFlag();
-                break;
-        }
-    }
-    private void Reveal()
+    // public void SetState(CellState cellState)
+    // {
+    //     switch (cellState)
+    //     {
+    //         case CellState.Hidden:
+    //             ShowHidden();
+    //             break;
+    //         case CellState.Revealed:
+    //             Reveal();
+    //             break;
+    //         case CellState.Flagged:
+    //             ShowFlag();
+    //             break;
+    //     }
+    // }
+
+    public void Reveal()
     {
         _meshRenderer.enabled = false;
     }
 
-    private void ShowFlag()
+    public void ShowFlag()
     {
         _meshRenderer.material.color = Color.yellow; 
     }
 
-    private void ShowHidden()
+    public void ShowHidden()
     {
         _meshRenderer.enabled = true;
     }

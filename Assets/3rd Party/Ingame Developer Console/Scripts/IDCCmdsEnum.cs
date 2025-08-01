@@ -2,6 +2,7 @@ namespace IDC
 {
 	public enum IDCCmdsEnum
 	{
+		AddCellLine = 280239329,
 		AddResource = 1035028523,
 		RemoveResource = -2004342482,
 		AddCube = 1811855600,

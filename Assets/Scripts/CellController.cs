@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using GameResources;
 using UnityEngine;
+
 public class CellController : MonoBehaviour
 {
     [SerializeField] private CellView cellViewPrefab;
     private CellData _cellData;
     private CellView _cellView;
+    private Producer _producer;
 
     private static CellView CreateCellView(Transform parent, CellView cellViewPrefab)
     {
+        //TODO add pooling for CellView
         CellView cell = Instantiate(cellViewPrefab, parent.position, Quaternion.identity, parent);
         return cell;
     }
@@ -21,11 +22,41 @@ public class CellController : MonoBehaviour
         _cellView = CreateCellView(transform, cellViewPrefab); 
         if(cellData == null)
         {
-            throw new System.ArgumentNullException(nameof(cellData), "CellData cannot be null.");
+            throw new ArgumentNullException(nameof(cellData), "CellData cannot be null.");
         }
         _cellView.Init(_cellData);
-        _cellData.OnIsProducingChanged += GenerateResources;
+        _producer = new Producer(() => _cellData.ProductionMap, () =>cellData.ProductionInterval);
+        _cellData.OnIsProducingChanged += _producer.GenerateResources;
     }
+    
+    private void SetState(CellState cellState)
+    {
+        _cellData.CellState = cellState;
+        _cellData.IsProducing = cellState == CellState.Flagged;
+        switch (cellState)
+        {
+            case CellState.Hidden:
+                _cellView.ShowHidden();
+                break;
+            case CellState.Revealed:
+                _cellView.Reveal();
+                break;
+            case CellState.Flagged:
+                _cellView.ShowFlag();
+                break;
+        }
+    }
+    
+    void OnDestroy()
+    {
+        ResourceManagerProvider.UnregisterProducer(_producer);
+        if (_cellView != null)
+        {
+            _cellView.Unsubscribe(_cellData);
+        }
+    }
+    
+#region InputHandling
     
     private void OnMouseEnter()
     {
@@ -64,60 +95,5 @@ public class CellController : MonoBehaviour
         }
     }
     
-    private void SetState(CellState cellState)
-    {
-        _cellData.CellState = cellState;
-        _cellView.SetState(cellState);
-
-        _cellData.IsProducing = cellState == CellState.Flagged;
-    }
-    
-    //Mayb cell currency class
-    private Coroutine _resourceGenerationCoroutine;
-
-    private void GenerateResources(bool enable)
-    {
-        if (_resourceGenerationCoroutine != null)
-        {
-            StopCoroutine(_resourceGenerationCoroutine);
-            _resourceGenerationCoroutine = null;
-        }
-
-        if (!enable) return;
-
-        if (!TryGetResourceType(out ResourceType resourceType))
-        {
-            Debug.LogError($"Invalid cell number: {_cellData.Number}");
-            return;
-        }
-
-        _resourceGenerationCoroutine = StartCoroutine(GenerateResourcesCoroutine(resourceType));
-    }
-
-    private bool TryGetResourceType(out ResourceType resourceType)
-    {
-        try
-        {
-            resourceType = BoardUtils.NumberToResourceType(_cellData.Number);
-            return true;
-        }
-        catch (Exception e)
-        {
-            resourceType = default;
-            return false;
-        }
-    }
-
-    private IEnumerator GenerateResourcesCoroutine(ResourceType resourceType)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(_cellData.ProductionInterval);
-            Dictionary<ResourceType, int> productionMap = _cellData.ProductionMap;
-            foreach (var resource in productionMap)
-            {
-                ResourceManager.Instance.AddResource(resource.Key, resource.Value);
-            }
-        }
-    }
+#endregion
 }
