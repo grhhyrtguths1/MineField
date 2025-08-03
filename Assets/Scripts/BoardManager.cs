@@ -2,11 +2,12 @@
 using IDC;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BoardManager : MonoBehaviour
 {
-    [SerializeField] private int width;
-    [SerializeField] private int height;
+    [SerializeField] private int startingWidth;
+    [SerializeField] private int startingHeight;
     [SerializeField] private int minesCount;
     [SerializeField] private float cellPadding = 0.1f;
     [SerializeField] private CellController cellControllerPrefab;
@@ -15,10 +16,9 @@ public class BoardManager : MonoBehaviour
     private List<List<CellController>> _cells;
     private void Awake()
     {
-        _boardData = new BoardData(width, height, minesCount);
+        _boardData = new BoardData(startingWidth, startingHeight, minesCount);
         GenerateCells();
     }
-    
     
     private void Start()
     {
@@ -27,11 +27,11 @@ public class BoardManager : MonoBehaviour
 
     private void GenerateCells()
     {
-        _cells = new List<List<CellController>>(height);
-        for (int y = 0; y < height; y++)
+        _cells = new List<List<CellController>>(startingHeight);
+        for (int y = 0; y < startingHeight; y++)
         {
-            List<CellController> row = new List<CellController>(width);
-            for (int x = 0; x < width; x++)
+            List<CellController> row = new List<CellController>(startingWidth);
+            for (int x = 0; x < startingWidth; x++)
             {
                 CellController cellController = CreateCellController(x, y);
                 row.Add(cellController);
@@ -51,8 +51,12 @@ public class BoardManager : MonoBehaviour
             return null;
         }
         cellController.name = $"Cell ({x},{y})";
-        cellController.Init(_boardData.GetCellData(x, y));
-                
+        CellData cellData = _boardData.GetCellData(x, y);
+        if (cellData != null)
+        {
+            cellController.Init(cellData);
+        }
+
 #if UNITY_EDITOR
         GameObject cellControllerGameObject = cellController.gameObject;
         cellControllerGameObject.hideFlags = HideFlags.DontSave;
@@ -63,9 +67,9 @@ public class BoardManager : MonoBehaviour
 
     private void OnValidate()
     {
-        width = Mathf.Max(1, width);
-        height = Mathf.Max(1, height);
-        minesCount = Mathf.Clamp(minesCount, 1, width * height - 1);
+        startingWidth = Mathf.Max(1, startingWidth);
+        startingHeight = Mathf.Max(1, startingHeight);
+        minesCount = Mathf.Clamp(minesCount, 1, startingWidth * startingHeight - 1);
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
@@ -80,8 +84,8 @@ public class BoardManager : MonoBehaviour
     
     private void RebuildBoard()
     {
-        if (_boardData == null || _boardData.Width != width || _boardData.Height != height)
-            _boardData = new BoardData(width, height, minesCount);
+        if (_boardData == null || _boardData.Width != startingWidth || _boardData.Height != startingHeight)
+            _boardData = new BoardData(startingWidth, startingHeight, minesCount);
 
         DestroyGrid();
         GenerateCells();
@@ -96,48 +100,59 @@ public class BoardManager : MonoBehaviour
     }
 
     [IDCCmd]
-    private void AddCellLine(Direction direction, int minesCount = 2)
+    private void AddCellLine(Direction direction = Direction.Right, int minesCount = 2)
     {
+        _boardData.AddCellLine(direction, minesCount);
         switch (direction)
         {
-            case Direction.Down:
-                height += 1;
-                List<CellController> newRow = new List<CellController>(width);
-                for (int i = 0; i < width; i++)
-                {
-                    CellController cellController = CreateCellController(i, height - 1);
-                    if (cellController != null)
-                    {
-                        newRow.Add(cellController);
-                    }
-                }
-                _cells.Add(newRow);
-                break;
-            case Direction.Up:
-                height += 1;
-                break;
-            case Direction.Left:
-                width += 1;
-                // for (int i = 0; i < height; i++)
-                // {
-                //     CellController cellController = CreateCellController(0, i);
-                //     if (cellController != null)
-                //     {
-                //         _cells[i].Insert(0, cellController);
-                //     }
-                // }
-                break;
             case Direction.Right:
-                width += 1;
-                for (int i = 0; i < height; i++)
+                for (int i = 0; i < _boardData.Height; i++)
                 {
-                    CellController cellController = CreateCellController(width - 1, i);
+                    CellController cellController = CreateCellController(_boardData.Width - 1, i);
                     if (cellController != null)
                     {
                         _cells[i].Add(cellController);
                     }
                 }
                 break;
+
+            case Direction.Left:
+                for (int i = 0; i < _boardData.Height; i++)
+                {
+                    CellController cellController = CreateCellController(0, i);
+                    if (cellController != null)
+                    {
+                        _cells[i].Insert(0, cellController);
+                    }
+                }
+                break;
+
+            case Direction.Down:
+                List<CellController> newRowDown = new List<CellController>(_boardData.Width);
+                for (int x = 0; x < _boardData.Width; x++)
+                {
+                    CellController cellController = CreateCellController(x, _boardData.Height - 1);
+                    if (cellController != null)
+                    {
+                        newRowDown.Add(cellController);
+                    }
+                }
+                _cells.Add(newRowDown);
+                break;
+
+            case Direction.Up:
+                List<CellController> newRowUp = new List<CellController>(_boardData.Width);
+                for (int x = 0; x < _boardData.Width; x++)
+                {
+                    CellController cellController = CreateCellController(x, 0);
+                    if (cellController != null)
+                    {
+                        newRowUp.Add(cellController);
+                    }
+                }
+                _cells.Insert(0, newRowUp);
+                break;
+
             default:
                 Debug.LogError("Invalid direction for adding a cell line.");
                 break;
