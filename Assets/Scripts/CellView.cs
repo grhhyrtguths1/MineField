@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CellView :MonoBehaviour
 {
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private List<GameObject> numberPrefab;
     [SerializeField] private TMP_Text numberText;
-    private MeshRenderer _meshRenderer;
+    [SerializeField] private MeshRenderer meshRenderer;
     
     public void Init(CellData cellData)
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
         ShowHidden();
         switch (cellData.CellType)
         {
@@ -41,43 +42,27 @@ public class CellView :MonoBehaviour
 
     public void SetHovered()
     {
-        _meshRenderer.material.color = Color.green; 
+        meshRenderer.material.color = Color.green; 
     }
 
     public void SetDefault(CellState cellState = CellState.Hidden)
     {
-        _meshRenderer.material.color = cellState == CellState.Flagged ? Color.yellow : Color.gray;
+        meshRenderer.material.color = cellState == CellState.Flagged ? Color.yellow : Color.gray;
     }
-    
-    // public void SetState(CellState cellState)
-    // {
-    //     switch (cellState)
-    //     {
-    //         case CellState.Hidden:
-    //             ShowHidden();
-    //             break;
-    //         case CellState.Revealed:
-    //             Reveal();
-    //             break;
-    //         case CellState.Flagged:
-    //             ShowFlag();
-    //             break;
-    //     }
-    // }
 
     public void Reveal()
     {
-        _meshRenderer.enabled = false;
+        meshRenderer.transform.DOScale(0f,0.35f).SetEase(Ease.InBounce);
     }
 
     public void ShowFlag()
     {
-        _meshRenderer.material.color = Color.yellow; 
+        meshRenderer.material.color = Color.yellow; 
     }
 
     public void ShowHidden()
     {
-        _meshRenderer.enabled = true;
+        meshRenderer.enabled = true;
     }
 
     private void UpdateNumber(int num)

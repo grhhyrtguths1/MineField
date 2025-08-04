@@ -27,11 +27,11 @@ public class BoardManager : MonoBehaviour
 
     private void GenerateCells()
     {
-        _cells = new List<List<CellController>>(startingHeight);
-        for (int y = 0; y < startingHeight; y++)
+        _cells = new List<List<CellController>>(_boardData.Height);
+        for (int y = 0; y < _boardData.Height; y++)
         {
-            List<CellController> row = new List<CellController>(startingWidth);
-            for (int x = 0; x < startingWidth; x++)
+            List<CellController> row = new List<CellController>(_boardData.Width);
+            for (int x = 0; x < _boardData.Width; x++)
             {
                 CellController cellController = CreateCellController(x, y);
                 row.Add(cellController);
@@ -86,7 +86,6 @@ public class BoardManager : MonoBehaviour
     {
         if (_boardData == null || _boardData.Width != startingWidth || _boardData.Height != startingHeight)
             _boardData = new BoardData(startingWidth, startingHeight, minesCount);
-
         DestroyGrid();
         GenerateCells();
     }
@@ -100,55 +99,47 @@ public class BoardManager : MonoBehaviour
     }
 
     [IDCCmd]
-    private void AddCellLine(Direction direction = Direction.Right, int minesCount = 2)
+    private void AddCellLineVisuals(Direction direction, int minesCount = 2)
     {
-        _boardData.AddCellLine(direction, minesCount);
+        _boardData.AddCellLineData(direction, minesCount);
+        float spacing = 1f + cellPadding;
+
         switch (direction)
         {
             case Direction.Right:
-                for (int i = 0; i < _boardData.Height; i++)
+                for (int y = 0; y < _cells.Count; y++)
                 {
-                    CellController cellController = CreateCellController(_boardData.Width - 1, i);
-                    if (cellController != null)
-                    {
-                        _cells[i].Add(cellController);
-                    }
+                    CellController cell = CreateCellController(_boardData.Width - 1, y);
+                    _cells[y].Add(cell);
                 }
                 break;
 
             case Direction.Left:
-                for (int i = 0; i < _boardData.Height; i++)
+                ShiftCells(new Vector3(spacing, 0, 0));
+                for (int y = 0; y < _cells.Count; y++)
                 {
-                    CellController cellController = CreateCellController(0, i);
-                    if (cellController != null)
-                    {
-                        _cells[i].Insert(0, cellController);
-                    }
+                    CellController cell = CreateCellController(0, y);
+                    _cells[y].Insert(0, cell);
                 }
                 break;
 
             case Direction.Down:
-                List<CellController> newRowDown = new List<CellController>(_boardData.Width);
+                List<CellController> newRowDown = new List<CellController>();
                 for (int x = 0; x < _boardData.Width; x++)
                 {
-                    CellController cellController = CreateCellController(x, _boardData.Height - 1);
-                    if (cellController != null)
-                    {
-                        newRowDown.Add(cellController);
-                    }
+                    CellController cell = CreateCellController(x, _boardData.Height - 1);
+                    newRowDown.Add(cell);
                 }
                 _cells.Add(newRowDown);
                 break;
 
             case Direction.Up:
-                List<CellController> newRowUp = new List<CellController>(_boardData.Width);
+                ShiftCells(new Vector3(0, -spacing, 0));
+                List<CellController> newRowUp = new List<CellController>();
                 for (int x = 0; x < _boardData.Width; x++)
                 {
-                    CellController cellController = CreateCellController(x, 0);
-                    if (cellController != null)
-                    {
-                        newRowUp.Add(cellController);
-                    }
+                    CellController cell = CreateCellController(x, 0);
+                    newRowUp.Add(cell);
                 }
                 _cells.Insert(0, newRowUp);
                 break;
@@ -157,7 +148,18 @@ public class BoardManager : MonoBehaviour
                 Debug.LogError("Invalid direction for adding a cell line.");
                 break;
         }
+
+        return;
+
+        void ShiftCells(Vector3 offset)
+        {
+            foreach (List<CellController> row in _cells)
+            {
+                foreach (CellController cell in row)
+                {
+                    cell.transform.position += offset;
+                }
+            }
+        }
     }
 }
-
-

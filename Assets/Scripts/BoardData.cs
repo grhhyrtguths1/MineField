@@ -31,52 +31,30 @@ public class BoardData
         throw new System.ArgumentOutOfRangeException($"Cell position ({x}, {y}) is out of bounds.");
     }
     
-    public void AddCellLine(Direction direction = Direction.Right, int minesCount = 2)
+    public void AddCellLineData(Direction direction = Direction.Right, int minesCount = 2)
     {
         minesCount = Mathf.Clamp(minesCount, 0, Width * Height - _minesCount);
         _minesCount += minesCount;
         switch (direction)
         {
             case Direction.Right:
+                AddVerticalColumn( false, minesCount);
                 Width += 1;
-                {
-                    List<List<CellData>> newColumn = InitBoard(1, Height);
-                    newColumn = InitMines(newColumn, minesCount);
-                    for (int i = 0; i < Height; i++)
-                    {
-                        _boardCells[i].Add(newColumn[i][0]);
-                    }
-                }
                 break;
 
             case Direction.Left:
+                AddVerticalColumn( true, minesCount);
                 Width += 1;
-                {
-                    List<List<CellData>> newColumn = InitBoard(1, Height);
-                    newColumn = InitMines(newColumn, minesCount);
-                    for (int i = 0; i < Height; i++)
-                    {
-                        _boardCells[i].Insert(0, newColumn[i][0]);
-                    }
-                }
                 break;
 
             case Direction.Down:
+                AddHorizontalRow( false, minesCount);
                 Height += 1;
-                {
-                    List<List<CellData>> newRow = InitBoard(Width, 1);
-                    newRow = InitMines(newRow, minesCount);
-                    _boardCells.Add(newRow[0]);
-                }
                 break;
 
             case Direction.Up:
+                AddHorizontalRow( true, minesCount);
                 Height += 1;
-                {
-                    List<List<CellData>> newRow = InitBoard(Width, 1);
-                    newRow = InitMines(newRow, minesCount);
-                    _boardCells.Insert(0, newRow[0]);
-                }
                 break;
 
             default:
@@ -84,6 +62,28 @@ public class BoardData
                 break;
         }
         LinkCells();
+        return;
+
+        void AddVerticalColumn(bool atStart, int mines)
+        {
+            var newColumn = InitMines(InitBoard(1, Height), mines);
+            for (int i = 0; i < Height; i++)
+            {
+                if (atStart)
+                    _boardCells[i].Insert(0, newColumn[i][0]);
+                else
+                    _boardCells[i].Add(newColumn[i][0]);
+            }
+        }
+
+        void AddHorizontalRow(bool atStart, int mines)
+        {
+            var newRow = InitMines(InitBoard(Width, 1), mines)[0];
+            if (atStart)
+                _boardCells.Insert(0, newRow);
+            else
+                _boardCells.Add(newRow);
+        }
     }
     
     private void LinkCells()

@@ -7,15 +7,15 @@ namespace GameResources
         private static event Action<ResourceManager> OnResourceManagerAvailable;
         private static ResourceManager _resourceManager;
 
-        public static void RegisterProducer(Producer producer)
+        public static void RegisterClient(ResourceClient client)
         {
             if (_resourceManager != null)
             {
-                producer.ReceiveResourceManager(_resourceManager);
+                client.ReceiveResourceManager(_resourceManager);
             }
             else
             {
-                OnResourceManagerAvailable += producer.ReceiveResourceManager;
+                OnResourceManagerAvailable += client.ReceiveResourceManager;
             }
         }
         
