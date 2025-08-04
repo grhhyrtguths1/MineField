@@ -3,6 +3,8 @@ namespace IDC
 	public enum IDCCmdsEnum
 	{
 		AddCellLineVisuals = 47562044,
+		OpenShop = -508479550,
+		CloseShop = 167949234,
 		AddResource = 1035028523,
 		RemoveResource = -2004342482,
 		AddCube = 1811855600,

@@ -19,9 +19,9 @@ namespace GameResources
             }
         }
         
-        public static void UnregisterProducer(Producer producer)
+        public static void UnregisterProducer(TileResourceProducer tileResourceProducer)
         {
-            OnResourceManagerAvailable -= producer.ReceiveResourceManager;
+            OnResourceManagerAvailable -= tileResourceProducer.ReceiveResourceManager;
         }
 
         public static void SetResourceManager(ResourceManager resourceManager)

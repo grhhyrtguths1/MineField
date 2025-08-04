@@ -7,7 +7,7 @@ public class CellController : MonoBehaviour
     [SerializeField] private CellView cellViewPrefab;
     private CellData _cellData;
     private CellView _cellView;
-    private Producer _producer;
+    private TileResourceProducer _tileResourceProducer;
 
     private static CellView CreateCellView(Transform parent, CellView cellViewPrefab)
     {
@@ -25,8 +25,8 @@ public class CellController : MonoBehaviour
             throw new ArgumentNullException(nameof(cellData), "CellData cannot be null.");
         }
         _cellView.Init(_cellData);
-        _producer = new Producer(() => _cellData.ProductionMap, () =>cellData.ProductionInterval);
-        _cellData.OnIsProducingChanged += _producer.GenerateResources;
+        _tileResourceProducer = new TileResourceProducer(() => _cellData.ProductionMap, () =>cellData.ProductionInterval);
+        _cellData.OnIsProducingChanged += _tileResourceProducer.GenerateResources;
     }
     
     private void SetState(CellState cellState)
@@ -49,7 +49,7 @@ public class CellController : MonoBehaviour
     
     void OnDestroy()
     {
-        ResourceManagerProvider.UnregisterProducer(_producer);
+        ResourceManagerProvider.UnregisterProducer(_tileResourceProducer);
         if (_cellView != null)
         {
             _cellView.Unsubscribe(_cellData);

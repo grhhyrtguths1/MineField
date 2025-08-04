@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resources:
     _serializedList:
-    - Key: 0
-      Value:
-        startAmount: 0
-        maxAmount: 100
     - Key: 1
       Value:
         startAmount: 0
@@ -47,6 +43,10 @@ MonoBehaviour:
         startAmount: 0
         maxAmount: 100
     - Key: 8
+      Value:
+        startAmount: 0
+        maxAmount: 100
+    - Key: 0
       Value:
         startAmount: 0
         maxAmount: 100

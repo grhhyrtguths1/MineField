@@ -35,6 +35,11 @@ namespace GameResources
         {
             _data.Add(type, -amount);
         }
+        
+        public bool HasResource(ResourceType type, int amount)
+        {
+            return _data.Get(type) >= amount;
+        }
 
         private void BindView(ResourceView view)
         {
